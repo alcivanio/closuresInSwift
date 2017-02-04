@@ -8,17 +8,44 @@
 
 import UIKit
 
-class OperationsTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+struct OperationInfo {
+    let symbol: String
+    let name:   String
+    
+    init(operation: Operation) {
+        symbol  = operation.operationType.symbol
+        name    = operation.operationType.name
     }
+}
 
+class OperationsTableViewCell: UITableViewCell {
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        if selected {
+            self.backgroundView?.addSubview(UIView())
+        }
+        else {
+            self.selectedBackgroundView?.addSubview(UIView())
+        }
+        
     }
 
+    @IBOutlet weak var bigSymbol: UILabel!
+    @IBOutlet weak var textDescription: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    public func fillWithInfo(info:OperationInfo) {
+        setValues(info)
+    }
+    
+    private func setValues(_ info:OperationInfo) {
+        bigSymbol.text       = info.symbol
+        textDescription.text = info.name
+    }
+    
 }
