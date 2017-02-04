@@ -51,7 +51,7 @@ class MainMenuViewController: UIViewController {
             let currentOperation        = operations[currentOperationIndex]
             let controller              = segue.destination  as! InformValuesViewController
             controller.operate          = currentOperation.getOperateClosure()
-            controller.updateLastValue  = self.getUpdateLastResultClosure()
+            //controller.updateLastValue  = self.getUpdateLastResultClosure()
             controller.title            = currentOperation.operationType.name
             
         default:
@@ -59,14 +59,15 @@ class MainMenuViewController: UIViewController {
         }
     }
     
-    private func getUpdateLastResultClosure()->((Double)->Void) {
-        let closure = {[unowned self] (lastValue: Double) in
-            self.lastResultLabel.isHidden   = false
-            self.lastResultLabel.text       = "\(Texts.lastResult) \(lastValue)"
-        }
-        
-        return closure
-    }
+    /*private func getUpdateLastResultClosure()->((Double)->Void) {
+     
+        /*
+            Write down a closure that receives a double value and show it on the screen and then return the closure.
+            Remember to set the self.lastResultLabel.isHidden value to false. (We wanna show it!)
+            Write it in this format: Texts.lastResult + " " + theReceivedValue
+
+        */
+    }*/
 }
 
 
@@ -105,4 +106,19 @@ extension MainMenuViewController: UITableViewDataSource {
         return cCell
     }
 }
+
+
+
+
+
+
+
+/*private func getUpdateLastResultClosure()->((Double)->Void) {
+ let closure = {[unowned self] (lastValue: Double) in
+ self.lastResultLabel.isHidden   = false
+ self.lastResultLabel.text       = "\(Texts.lastResult) \(lastValue)"
+ }
+ 
+ return closure
+ }*/
 

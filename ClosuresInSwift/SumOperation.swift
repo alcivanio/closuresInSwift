@@ -18,8 +18,8 @@ class SumOperation: Operation {
     }
     
     func getOperateClosure() -> ((Double, Double) -> Double?) {
-        let closure = {(num1: Double, num2: Double) -> Double? in
-            let result = self.operate(firstNumber: num1, secondNumber: num2)
+        let closure:(Double, Double) -> Double? = {
+            let result = self.operate(firstNumber: $0, secondNumber: $1)
             return result
         }
         return closure
