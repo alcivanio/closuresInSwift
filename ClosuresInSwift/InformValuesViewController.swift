@@ -46,7 +46,7 @@ class InformValuesViewController: UIViewController {
             
             if let resultOperation = operate!(numberField1, numberField2) {
                 showResult(resultOperation)
-                //updateLastValue!(resultOperation)
+                updateLastValue!(resultOperation)
             }
             else {
                 showError(message: Texts.defaultOperationError)

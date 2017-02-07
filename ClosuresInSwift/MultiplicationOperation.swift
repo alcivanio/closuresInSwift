@@ -17,6 +17,15 @@ class MultiplicationOperation: Operation {
         return sumResult
     }
     
+    func getOperateClosure() -> ((Double, Double) -> Double?) {
+        let closure = {(num1: Double, num2: Double) -> Double? in
+            let result = self.operate(firstNumber: num1, secondNumber: num2)
+            return result
+        }
+        return closure
+    }
+    
+    
     
 }
 
